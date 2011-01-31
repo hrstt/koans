@@ -29,6 +29,9 @@ class AboutHashes < EdgeCase::Koan
 
     # Bonus Question: Why was "expected" broken out into a variable
     # rather than used as a literal?
+    expected = {:one => __, :two => "dos"}
+    expected[:one] = "eins"
+    assert_equal true, expected == hash
   end
 
   def test_hash_is_unordered

@@ -15,12 +15,22 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
-  if a == b && b == c && c == a
+  if [a, b, c].delete_if{|l| l <= 0 }.size < 3
+    raise TriangleError
+  elsif [a,b,c].uniq.size == 1
     :equilateral
-  elsif a != b && b != c && a != c
+  elsif [a,b,c].uniq.size == 3
     :scalene
   else
-    :isosceles
+    tri = [a, b, c]
+    largest = tri.max
+    tri.delete(largest)
+    
+    if tri.size == 2 && largest >= tri.inject(:+)
+      raise TriangleError
+    else
+      :isosceles
+    end
   end
 end
 

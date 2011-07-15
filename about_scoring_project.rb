@@ -31,11 +31,12 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 
 def score(dice)
   # You need to write this method
+  score_board = dice.inject(Hash.new 0) {|h, num| h[num] += 1; }
 end
 
 class AboutScoringProject < EdgeCase::Koan
   def test_score_of_an_empty_list_is_zero
-    assert_equal 0, score([])
+    assert_equal 0, score([2,2,3,4,6])
   end
 
   def test_score_of_a_single_roll_of_5_is_50

@@ -31,7 +31,21 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 
 def score(dice)
   # You need to write this method
-  score_board = dice.inject(Hash.new 0) {|h, num| h[num] += 1; }
+  score_board = dice.inject(Hash.new 0) {|h, num| h[num] += 1; h}
+  score_board.inject(0){|sum, (h, v)|
+    if v >= 3
+      sum += h * 100
+      sum += 900 if h == 1
+      score_board[h] -= 3
+    end
+    if h == 1
+      sum += score_board[h]  * 100
+    elsif h == 5
+      sum += score_board[h] * 50
+    end
+    p sum
+    sum
+  }
 end
 
 class AboutScoringProject < EdgeCase::Koan

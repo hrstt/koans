@@ -43,7 +43,6 @@ def score(dice)
     elsif h == 5
       sum += score_board[h] * 50
     end
-    p sum
     sum
   }
 end

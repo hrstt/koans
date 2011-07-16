@@ -19,7 +19,6 @@ class AboutDiceProject < EdgeCase::Koan
     dice = DiceSet.new
 
     dice.roll(5)
-    p dice.roll(5)
     assert dice.values.is_a?(Array), "should be an array"
     assert_equal 5, dice.values.size
     dice.values.each do |value|
